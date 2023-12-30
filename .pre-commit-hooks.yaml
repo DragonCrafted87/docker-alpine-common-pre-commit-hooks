@@ -1,5 +1,5 @@
--   id: org-hook
-    name: org-wide hooks
-    language: script
-    entry: ./run-org-hooks
-    verbose: true
+- id: common-hook
+  name: common hooks
+  language: script
+  entry: ./run_common_hooks
+  verbose: true
