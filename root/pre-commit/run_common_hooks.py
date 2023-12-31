@@ -1,11 +1,14 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-import os
+
 import sys
+from os import getenv
+from os.path import dirname
+from os.path import realpath
 from subprocess import CalledProcessError
 from subprocess import run as run_process
 
-HERE = os.path.dirname(os.path.realpath(__file__))
+HERE = dirname(realpath(__file__))
 
 
 def main():
@@ -16,8 +19,13 @@ def main():
         "always",
         "--config",
         "/pre-commit/pre-commit-config.yaml",
-        "--files",
-    ] + sys.argv[1:]
+    ]
+
+    if bool(getenv("FULL_CHECK", "False")):
+        cmd.append("--all-files")
+    else:
+        cmd.append("--files")
+        cmd += sys.argv[1:]
 
     try:
         pre_commit = run_process(cmd, check=True)
