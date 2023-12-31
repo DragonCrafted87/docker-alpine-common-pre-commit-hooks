@@ -12,14 +12,20 @@ LABEL org.label-schema.build-date=$BUILD_DATE \
       org.label-schema.version=$VERSION \
       org.label-schema.schema-version="1.0"
 
+COPY root/. /
+
 RUN ash <<eot
     set -e
 
     apk add --no-cache --update \
         bash \
+        gcc \
         git \
+        libffi-dev \
+        musl-dev \
         nodejs \
         npm \
+        python3-dev \
 
     pip3 --no-cache-dir \
         install \
@@ -28,18 +34,17 @@ RUN ash <<eot
 
     rm -rf /tmp/*
     rm -rf /var/cache/apk/*
-eot
-
-COPY root/. /
-
-RUN bash <<eot
-    set -e
-
     chmod +x -R /scripts/*
 
-    pushd /pre-commit || exit 1
+    cd /pre-commit || exit 1
     git init --initial-branch main
     pre-commit install --color always --install-hooks --config pre-commit-config.yaml
+
+    apk del \
+        gcc \
+        libffi-dev \
+        musl-dev \
+        python3-dev
 eot
 
 ENV TZ=America/Chicago
