@@ -21,9 +21,9 @@ def main():
         "/pre-commit/pre-commit-config.yaml",
     ]
 
-    if getenv("FULL_CHECK", "False").lower() not in ["true", "yes", "t", "1"]:
+    if getenv("FULL_CHECK", "False").lower() in ["true", "yes", "t", "1"]:
         cmd.append("--all-files")
-    else:
+    elif len(sys.argv) > 0:
         cmd.append("--files")
         cmd += sys.argv[1:]
 
