@@ -10,4 +10,4 @@ MSYS_NO_PATHCONV=1 \
         --name "$NAME" \
         --volume "$(pwd)":/src \
         ghcr.io/dragoncrafted87/alpine-common-pre-commit-hooks \
-        "${ARGS[@]}"
+        "$(git diff --cached --name-only --diff-filter=ACM)"
