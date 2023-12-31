@@ -17,6 +17,7 @@ COPY root/. /
 RUN ash <<eot
     set -e
 
+    apk upgrade
     apk add --no-cache --update \
         bash \
         gcc \
