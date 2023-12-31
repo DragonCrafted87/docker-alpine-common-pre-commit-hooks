@@ -21,7 +21,7 @@ def main():
         "/pre-commit/pre-commit-config.yaml",
     ]
 
-    if bool(getenv("FULL_CHECK", "False")):
+    if getenv("FULL_CHECK", "False").lower() not in ["true", "yes", "t", "1"]:
         cmd.append("--all-files")
     else:
         cmd.append("--files")
