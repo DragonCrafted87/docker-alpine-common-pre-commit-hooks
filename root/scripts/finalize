@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+echo "$@"
+
+cd /src || exit 1
+/pre-commit/run_common_hooks.py "$@"

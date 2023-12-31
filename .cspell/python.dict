@@ -2,10 +2,15 @@ Analyse
 TYPECHECK
 analyse
 analysed
+autofix
 baz
+beautysh
 cls
 docstrings
+gfm
 inlinevar
+markdownlint
+mdformat
 metaclass
 msvs
 mymodule
@@ -14,5 +19,7 @@ overgeneral
 paren
 parseable
 pygtk
+pylintrc
 rcfile
 rgx
+utf

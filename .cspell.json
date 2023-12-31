@@ -9,7 +9,9 @@
         "misc",
         "python-extra",
         "python",
-        "shell"
+        "shell",
+        "github",
+        "docker"
     ],
     "dictionaryDefinitions": [
         {
@@ -24,6 +26,14 @@
         {
             "name": "shell",
             "path": "./.cspell/shell.dict"
+        },
+        {
+            "name": "docker",
+            "path": "./.cspell/docker.dict"
+        },
+        {
+            "name": "github",
+            "path": "./.cspell/github.dict"
         }
     ],
     "flagWords": [

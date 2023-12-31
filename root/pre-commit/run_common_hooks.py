@@ -9,14 +9,13 @@ HERE = os.path.dirname(os.path.realpath(__file__))
 
 
 def main():
-    cfg = os.path.join(HERE, "orghooks.yaml")
     cmd = [
         "pre-commit",
         "run",
         "--color",
         "always",
         "--config",
-        cfg,
+        "/pre-commit/pre-commit-config.yaml",
         "--files",
     ] + sys.argv[1:]
 
@@ -24,7 +23,6 @@ def main():
         pre_commit = run_process(cmd, check=True)
         return pre_commit.returncode
     except CalledProcessError as e:
-        print(e.cmd)
         return e.returncode
 
 

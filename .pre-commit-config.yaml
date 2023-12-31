@@ -1,8 +1,0 @@
-repos:
-- repo: local
-  hooks:
-  - id: common-hook
-    name: common hooks
-    language: script
-    entry: ./run_common_hooks
-    verbose: true
